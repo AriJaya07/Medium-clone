@@ -29,7 +29,7 @@ const styles = {
     recommendationThumbnailContainer: `flex flex-1 items-center justify-center h-[4rem] w-[4rem]`,
     recommendationThumbnail: `object-cover`,
     articleContentWrapper: `flex items-center justify-between cursor-pointer my-[1rem]`,
-    articleContent: `flex-[4rem]`
+    articleContent: `flex-[4]`
 }
 
 const Recommendations = ({ author }) => {
