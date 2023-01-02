@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { MdMarkEmailUnread } from 'react-icons/md'
 import ReplitLogo from '../static/replit.png'
-import TutoralImg from '../static/tutorial.jpg'
+import TutorialImg from '../static/tutorial.jpg'
 import CPLogo from '../static/cp.png'
 import Qazi from '../static/qazi.jpg'
 import JSLogo from '../static/jsLogo.png'
@@ -61,24 +61,27 @@ const Recommendations = ({ author }) => {
                 <div className={styles.recommendationContainer}>
                     <div className={styles.title}>More from Medium</div>
                     <div className={styles.articlesContainer}>
+
+                        {recommendedPosts.map(post => (
                         <div className={styles.articleContentWrapper}>
                             <div className={styles.articleContent}>
 
                                 <div className={styles.recommendationAuthorContainer}>
                                     <div className={styles.recommendationAuthorProfileImageContainer}>
-                                        <Image src={Qazi} height={100} width={100} />
+                                        <Image src={post.image} height={100} width={100} />
                                     </div>
-                                    <div className={styles.recommendationAuthorName}>Ari Jaya</div>
+                                    <div className={styles.recommendationAuthorName}>{post.author.name}</div>
                                 </div>    
-                                <div className={styles.recommendationTitle}>The Ultimate JavaScript Course for beginners by Clever Programmer</div>
+                                <div className={styles.recommendationTitle}>{post.title}</div>
                             </div>
                             
                             <div className={styles.recommendationThumbnailContainer}>
                                 <Image
                                 className={styles.recommendationThumbnail}
-                                src={JSLogo} height={100} width={100} />
+                                src={post.image} height={100} width={100} />
                             </div>
                         </div>
+                    ))}
                     </div>
                 </div>
             </div>
@@ -87,3 +90,30 @@ const Recommendations = ({ author }) => {
 }
 
 export default Recommendations
+
+const recommendedPosts = [
+    {
+        title: 'What can you do with Replit?',
+        image: TutorialImg,
+        author: {
+            name: 'Jaya Kusuma',
+            image: CPLogo
+        }
+    },
+    {
+        title: 'What can you do with Replit?',
+        image: ReplitLogo,
+        author: {
+            name: 'Ari Jaya',
+            image: CPLogo
+        }
+    },
+    {
+        title: 'What can you do with Replit?',
+        image: JSLogo,
+        author: {
+            name: 'Jaya Kusuma',
+            image: CPLogo
+        }
+    },
+]

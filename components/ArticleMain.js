@@ -11,7 +11,7 @@ import Banner from './../static/banner.png'
 
 const styles = {
     wrapper: `flex items-center justify-center flex-[3] border-l border-r bg-white text-black`,
-    content: `h-screen w-full p-[2rem]`,
+    content: `h-screen overflow-scroll w-full p-[2rem]`,
     postHeaderContainer: `flex justify-between items-center mt-[2.2rem] mb-[1.2rem]`,
     authorContainer: `flex gap-[1rem]`,
     authorProfileImageContainer: `h-[3rem] w-[3rem] grid center rounded-full overflow-hidden`,
