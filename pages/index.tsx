@@ -1,6 +1,8 @@
-import Header from '../components/Header';
-import Banner from '../components/Banner';
+import Header from '../components/Header'
+import Banner from '../components/Banner'
 import PostCard from '../components/PostCard'
+import { MediumContext } from '../context/MediumContext'
+import { useContext } from 'react'
 
 
 const styles = {
@@ -14,6 +16,10 @@ const styles = {
 }
 
 export default function Home() {
+  const { users } = useContext(MediumContext)
+
+  console.log(users, '#')
+  
   return (
     <div className={styles.wrapper}>
       <Header />
