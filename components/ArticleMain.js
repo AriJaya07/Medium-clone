@@ -28,7 +28,9 @@ const styles = {
     articleText: `font-mediumSerif text-[1.4rem] text-[#292929]`,
 }
 
-const ArticleMain = () => {
+const ArticleMain = ({ post, author }) => {
+    console.log(post, author, 'work')
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
@@ -43,9 +45,12 @@ const ArticleMain = () => {
                             />
                         </div>
                         <div className={styles.column}>
-                            <div>Ari Jaya</div>
+                            <div>{author?.data?.name}</div>
                             <div className={styles.postDetails}>
-                                <span>June 15 - 7 min read -</span><span className={styles.listenButton}>
+                                <span>{new Date(post.data?.postedOn).toLocaleString('en-US', {
+                                    day: 'numeric',
+                                    month: 'short'
+                                })} - {post.data?.postLength} min read -</span><span className={styles.listenButton}>
                                     <AiFillPlayCircle /> Listen    
                                 </span>
                             </div>
@@ -71,15 +76,19 @@ const ArticleMain = () => {
                         />
                     </div>
                     <h1 className={styles.title}>
-                        7 Free Tools That Will Make You More Productive in 2022
+                        {post?.data?.title}, {' '}
+                        {new Date(post.data?.postedOn).toLocaleString('en-US', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                        })}
                     </h1>
                     <h4 className={styles.subtitle}>
-                        <div>Ari Jaya, June 15, 2022</div>
-                        <div>Brief: Productivity is a skill that can be learned</div>
+                        <div>{author?.data?.name}, June 15, 2022</div>
+                        <div>{post?.data?.brief}</div>
                     </h4>
                     <div className={styles.articleText}>
-                        Hello, My name is Ari Jaya!, I'm a self-taught Developer. I love being productive everyday. I learned progarmming languages through made real-world project such as Documentation site, paper book, youtube social media and etc.
-                        Because I love to think creative to learn critical concept and to solve the fundamental problem in the projects, and also learning from the mistakes to push forward  for the best perfomance in the future.
+                        {post?.data?.body}
                     </div>
                 </div>
             </div>
