@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import { useContext } from 'react'
 import Logo from '../static/logo.png';
+import { MediumContext } from '../context/MediumContext'
 
 const styles = {
     wrapper: 'flex justify-center gap-10 p-5 bg-[#FCC017]',
@@ -11,6 +13,7 @@ const styles = {
 }
 
 const Header = () => {
+    const { currentUser, handleUserAuth} = useContext(MediumContext)
     return (
         <div className={styles.wrapper}>
             <div className={styles.content}>
@@ -22,13 +25,24 @@ const Header = () => {
                         width={200}
                     />
                 </div>
-
-                <div className={styles.bannerNav}>
+                {currentUser ?
+                (<div className={styles.bannerNav}>
                     <div>Our Story</div>
                     <div>Membership</div>
-                    <div>Sign in</div>
-                    <div className={styles.accentedButton}>Get Started</div>
-                </div>
+                    <div className={styles.accentedButton}>Write</div>
+                    <div className={styles.accentedButton}>Get Unlimited Access</div>
+                </div>)
+                 : (
+                    <>
+                        <div className={styles.bannerNav}>
+                            <div>Our Story</div>
+                            <div>Membership</div>
+                            <div onClick={handleUserAuth}>Sign in</div>
+                            <div className={styles.accentedButton}>Get Started</div>
+                        </div>
+                    </>
+                 )
+                }
             </div>
         </div>
     )
