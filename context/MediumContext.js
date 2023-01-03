@@ -66,11 +66,11 @@ const MediumProvider = ({children}) => {
         const user = userData.user 
         console.log(userData, 'yap')
         setCurrentUser(user)
-        addUserToFirebase(user)
+        addUserToFirebase(currentUser)
     }
 
     return (
-        <MediumContext.Provider value={{posts, users, handleUserAuth, currentUser }}>
+        <MediumContext.Provider value={{ posts, users, handleUserAuth, currentUser }}>
             {children}
         </MediumContext.Provider>
     )
